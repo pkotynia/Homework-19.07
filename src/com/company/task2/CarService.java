@@ -10,6 +10,10 @@ import java.util.stream.Collectors;
 public class CarService {
     public static void main(String[] args) {
 
+        //tak jak wspominałem na zajęciach wymyślanie nazw to jest natrudniejsza rzecz. 
+        //Tutaj w chcemy tylko nakarmić listę więc tez zminne nigdzie indziej nie będą użyte. 
+        //Możesz się spotkać z określeniem garbage variables. Proponuję tutaj zrobić inline
+        //carsList.add(new Car("Daewoo", "Lanos", new BigDecimal(2000), Year.of(1998), EngineType.R3));
         Car car1 = new Car("Daewoo", "Lanos", new BigDecimal(2000), Year.of(1998), EngineType.R3);
         Car car2 = new Car("Fiat", "Bravo", new BigDecimal(12000), Year.of(2010), EngineType.R6);
         Car car3 = new Car("Ford", "Fiesta", new BigDecimal(7000), Year.of(2006), EngineType.R4);
@@ -19,6 +23,8 @@ public class CarService {
         Car car7 = new Car("Fiat", "Bravo", new BigDecimal(8000), Year.of(2008), EngineType.R4);
 
         List<Car> carsList = new ArrayList<>();
+        
+        //Generalnie CarService wystawia API - czyli metody. W zadaniu chodziło o napisanie kilku metod
         //podpunkt 1
         carsList.add(car1);
         carsList.add(car2);
@@ -29,6 +35,7 @@ public class CarService {
         carsList.add(car7);
         carsList.add(car7);
 
+        //tutaj chodziło o usunięcie konkretnego auta
         //podpunkt 2
         carsList.remove(carsList.size() - 1);
 
@@ -37,6 +44,7 @@ public class CarService {
         displayList(carsList);
 
         //podpunkt 4
+        //equalsy enumy porównujemy ==
         List<Car> carsWithV12Engine = carsList.stream()
                 .filter(car -> car.engineType.equals(EngineType.V12))
                 .collect(Collectors.toList());
